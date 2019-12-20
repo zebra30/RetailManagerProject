@@ -4,12 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPWPFUserInterface.Helpers;
 
 namespace TMPWPFUserInterface.ViewModels
 {
     public class LoginViewModel : Screen
     {
+        private IAPIHelper _iAPIHelper;
+        public LoginViewModel(IAPIHelper iAPIHelper)
+        {
+            _iAPIHelper = iAPIHelper;
+        }
+        
         private string _userName = "";
+
+       
 
         public string UserName
         {
@@ -52,9 +61,18 @@ namespace TMPWPFUserInterface.ViewModels
             }
         }
 
-        public void LogIn(string userName, string password)
+        public async Task LogIn(string userName, string password)
         {
-            Console.Write("From Login");
+            try
+            {
+                var model = await _iAPIHelper.Authenticate(UserName, Password);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+
         
         }
 
