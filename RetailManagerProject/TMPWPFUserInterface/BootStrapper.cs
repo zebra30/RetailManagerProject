@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using TMPWPFUserInterface.ViewModels;
 
 namespace TMPWPFUserInterface
@@ -16,6 +17,11 @@ namespace TMPWPFUserInterface
         public BootStrapper()
         {
             Initialize();
+
+            ConventionManager.AddElementConvention<PasswordBox>(
+                PasswordBoxHelper.BoundPasswordProperty,
+                  "Password",
+                  "PasswordChanged");
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)

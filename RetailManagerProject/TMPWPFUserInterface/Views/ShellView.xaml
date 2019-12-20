@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:TMPWPFUserInterface.Views"
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <!--Dock Panel allows us to Dock things  in different position -->
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <!-- underscore allows us to use the all key to open up the file system-->
+          <MenuItem Header="_File" FontSize="18"></MenuItem>
+          <MenuItem Header="_Account" FontSize="18">
+            <MenuItem x:Name="LoginScreen" Header="_Login"></MenuItem>
+
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <ContentControl x:Name="ActiveItem" Margin="5"></ContentControl>
+        </Grid>
+    </DockPanel>
+   
 </Window>
