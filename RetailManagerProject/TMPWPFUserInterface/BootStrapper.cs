@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using TMPWPFUserInterface.Helpers;
 using TMPWPFUserInterface.ViewModels;
+using TRMDesktopUI.Library.Api;
+using TRMDesktopUI.Library.Models;
 
 namespace TMPWPFUserInterface
 {
@@ -42,8 +43,8 @@ namespace TMPWPFUserInterface
             _container
                 .Singleton<IWindowManager, WindowManager>() //Window Manager
                 .Singleton<IEventAggregator, EventAggregator>() //Event Messages through out application
-                .Singleton<IAPIHelper, APIHelper>();
-
+                .Singleton<IAPIHelper, APIHelper>()
+                .Singleton<ILoggedInUserModel, LoggedInUserModel>();
             GetType().Assembly.GetTypes()   //Get all the types in the Assembly
                 .Where(type => type.IsClass) //Where Type is a Class
                 .Where(type => type.Name.EndsWith("ViewModel")) // Where the name of the class ends with ViewModel

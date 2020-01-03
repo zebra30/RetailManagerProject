@@ -89,8 +89,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BootStrapper.cs" />
-    <Compile Include="Helpers\APIHelper.cs" />
-    <Compile Include="Helpers\IAPIHelper.cs" />
     <Compile Include="Models\AuthenticatedUser.cs" />
     <Compile Include="PasswordBoxHelper.cs" />
     <Compile Include="ViewModels\IAPIClient.cs" />
@@ -150,7 +148,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TRMDesktopUI.Library\TRMDesktopUI.Library.csproj">
+      <Project>{F307A5F9-3B89-4208-8963-B32B9273D3A1}</Project>
+      <Name>TRMDesktopUI.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
@@ -162,6 +165,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TMPWPFUserInterface.Helpers;
+using TRMDesktopUI.Library.Api;
 
 namespace TMPWPFUserInterface.ViewModels
 {
@@ -93,6 +93,11 @@ namespace TMPWPFUserInterface.ViewModels
             {
                 ErrorMessage = string.Empty;
                 var model = await _iAPIHelper.Authenticate(UserName, Password);
+
+                if (model != null)
+                {
+                    await _iAPIHelper.GetLoggedInUserInfo(model.Access_Token);
+                }
 
             }
             catch (Exception ex)
