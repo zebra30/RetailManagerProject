@@ -18,8 +18,6 @@ namespace TMPWPFUserInterface.ViewModels
         
         private string _userName = "";
 
-       
-
         public string UserName
         {
             get { return _userName; }
@@ -46,6 +44,34 @@ namespace TMPWPFUserInterface.ViewModels
                 }
         }
 
+                            
+        public bool IsErrorVisible
+        {
+            get {
+                    var output = false;
+
+                if (ErrorMessage?.Length > 0)
+                {
+                    output = true;
+                }
+                    return output; 
+                }
+            
+        }
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set { 
+                    _errorMessage = value;
+                    NotifyOfPropertyChange(() => IsErrorVisible);
+                    NotifyOfPropertyChange(() => ErrorMessage);
+            }
+        }
+
+
         public bool CanLogIn
         {
             get
@@ -65,12 +91,14 @@ namespace TMPWPFUserInterface.ViewModels
         {
             try
             {
+                ErrorMessage = string.Empty;
                 var model = await _iAPIHelper.Authenticate(UserName, Password);
+
             }
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.Message);
+                ErrorMessage = ex.Message;
             }
 
         

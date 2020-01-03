@@ -52,7 +52,7 @@ namespace TMPWPFUserInterface
                         viewModelType, viewModelType.ToString(), viewModelType)); //register each ViewModel class
         
         }
-
+        
         /// <summary>
         /// Use to get instance of an object
         /// </summary>
